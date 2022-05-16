@@ -1,0 +1,12 @@
+.cardDeco{
+  display: flex;
+  flex-wrap:wrap;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.card{
+  flex: 1;
+  margin: 20px 30px;
+  min-width: 300px;
+}

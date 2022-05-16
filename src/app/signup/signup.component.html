@@ -1,0 +1,53 @@
+<div class="container">
+  <form #userForm="ngForm" novalidate (ngSubmit)="saveData()">
+    <div class="form-group">
+      <label>User Name: </label>
+      <input type="text" pattern="[A-Za-z]" [class.is-invalid]="name.invalid && name.touched" required name="userName" #name="ngModel" [(ngModel)]="userModel.userName" class="form-control" placeholder="Enter Your User Name" />
+      <div *ngIf="name.errors && name.touched">
+        <small class="text-danger" *ngIf="name.errors['required']" >Name is Required</small>
+        <small class="text-danger" *ngIf="name.errors['pattern']">Name Must Contains Capital and Small letters Without Spaces</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-Mail: </label>
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" required name="email" #email="ngModel" [(ngModel)]="userModel.email" class="form-control" placeholder="Enter Your E-Mail" />
+      <div *ngIf="email.errors && email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']" >Email is Required</small>
+        <small class="text-danger" *ngIf="email.errors['pattern']">Email Must in Form of (aaa@bb.com)</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password: </label>
+      <input type="password" [class.is-invalid]="password.invalid && password.touched" required name="password" #password="ngModel" [(ngModel)]="userModel.password" class="form-control" placeholder="Enter Your User Password" />
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is Required</small>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password: </label>
+      <input type="password" [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched" required name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="userModel.confirmPassword" class="form-control" placeholder="Re-write Your Password" />
+      <small class="text-danger" [class.d-none]="confirmPassword.valid || confirmPassword.untouched">Confirmation is Required</small>
+    </div>
+    <div class="form-group">
+      <label>Phone Number: </label>
+      <input type="tel" pattern="^01(0|1|2|4|5)\d{8}" [class.is-invalid]="phone.invalid &&phone.touched" required name="phone" #phone="ngModel" [(ngModel)]="userModel.phone" class="form-control" placeholder="Enter Your Phone Number" />
+      <div *ngIf="phone.errors && phone.touched">
+        <small class="text-danger" *ngIf="phone.errors['required']" >Phone Number is Required</small>
+        <small class="text-danger" *ngIf="phone.errors['pattern']">Phone Number Must be 11 Digit and Egyptian </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Where you hear about us: </label>
+      <br/>
+      <select class="custom-select" [class.is-invalid]="selection.invalid && selection.touched" required #selection="ngModel" [(ngModel)]="userModel.selection" name="selection">
+          <option selected>
+            Choose from list:
+          </option>
+          <option *ngFor="let topic of topics">
+            {{topic}}
+          </option>
+      </select>
+      <small class="text-danger" [class.d-none]="selection.valid || selection.untouched">Please Select One</small>
+    </div>
+    <br/>
+    <input type="submit" class="btn btn-success" value="SIGN UP" />
+  </form>
+</div>

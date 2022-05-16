@@ -1,0 +1,46 @@
+<button (click)="renderValues()">Buy</button>
+
+<br>
+
+<!--
+    Table
+-->
+<table *ngIf="isPurshased; then showTable; else hideTable"></table>
+
+<ng-template #showTable>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Products</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">img</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productList">
+          <th scope="row">{{product.ID}}</th>
+          <td>{{product.Name | uppercase}}</td>
+          <td>{{product.Price}}</td>
+          <td>{{product.Quantity}}</td>
+          <td><img [src]="product.img" width='50px' height="50px"/></td>
+        </tr>
+        <tr>
+          <td colspan="5">
+          <div class="buttons">
+          <button class="btn btn-primary" (click)="product_with_discount()">Products with discount</button>
+          <button class="btn btn-primary" (click)="product_without_discount()">Products without discount</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <router-outlet></router-outlet>
+</ng-template>
+
+<ng-template #hideTable>
+  <h2>Thanks for purchasing from our Store, Mohamed Adel</h2>
+</ng-template>
+
+

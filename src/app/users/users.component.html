@@ -1,0 +1,9 @@
+<div class="cardDeco">
+  <div class="card text-dark bg-info mb-3" style="max-width: 18rem;" *ngFor="let user of usersList">
+    <div class="card-header">{{user.name}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{user.username}}</h5>
+      <p class="card-text">{{user.email}}</p>
+    </div>
+  </div>
+</div>
